@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AboutDottxtRouteImport } from './routes/about[.]txt'
 import { Route as AiCrawlabilityRouteImport } from './routes/ai-crawlability'
+import { Route as AuditRouteImport } from './routes/audit'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as IndexDottxtRouteImport } from './routes/index[.]txt'
 import { Route as InsightsDottxtRouteImport } from './routes/insights[.]txt'
@@ -47,6 +48,11 @@ const AboutDottxtRoute = AboutDottxtRouteImport.update({
 const AiCrawlabilityRoute = AiCrawlabilityRouteImport.update({
   id: '/ai-crawlability',
   path: '/ai-crawlability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HealthRoute = HealthRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
   '/ai-crawlability': typeof AiCrawlabilityRoute
+  '/audit': typeof AuditRoute
   '/health': typeof HealthRoute
   '/index.txt': typeof IndexDottxtRoute
   '/insights.txt': typeof InsightsDottxtRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
   '/ai-crawlability': typeof AiCrawlabilityRoute
+  '/audit': typeof AuditRoute
   '/health': typeof HealthRoute
   '/index.txt': typeof IndexDottxtRoute
   '/insights.txt': typeof InsightsDottxtRoute
@@ -173,6 +181,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
   '/ai-crawlability': typeof AiCrawlabilityRoute
+  '/audit': typeof AuditRoute
   '/health': typeof HealthRoute
   '/index.txt': typeof IndexDottxtRoute
   '/insights.txt': typeof InsightsDottxtRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about.txt'
     | '/ai-crawlability'
+    | '/audit'
     | '/health'
     | '/index.txt'
     | '/insights.txt'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about.txt'
     | '/ai-crawlability'
+    | '/audit'
     | '/health'
     | '/index.txt'
     | '/insights.txt'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about.txt'
     | '/ai-crawlability'
+    | '/audit'
     | '/health'
     | '/index.txt'
     | '/insights.txt'
@@ -260,6 +272,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AboutDottxtRoute: typeof AboutDottxtRoute
   AiCrawlabilityRoute: typeof AiCrawlabilityRoute
+  AuditRoute: typeof AuditRoute
   HealthRoute: typeof HealthRoute
   IndexDottxtRoute: typeof IndexDottxtRoute
   InsightsDottxtRoute: typeof InsightsDottxtRoute
@@ -305,6 +318,13 @@ declare module '@tanstack/react-router' {
       path: '/ai-crawlability'
       fullPath: '/ai-crawlability'
       preLoaderRoute: typeof AiCrawlabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/health': {
@@ -420,6 +440,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AboutDottxtRoute: AboutDottxtRoute,
   AiCrawlabilityRoute: AiCrawlabilityRoute,
+  AuditRoute: AuditRoute,
   HealthRoute: HealthRoute,
   IndexDottxtRoute: IndexDottxtRoute,
   InsightsDottxtRoute: InsightsDottxtRoute,

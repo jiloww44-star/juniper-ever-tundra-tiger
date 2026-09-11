@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
 import KineticDotsLoader from "@/components/KineticDotsLoader";
-import { AuditLeadForm } from "@/components/AuditLeadForm";
+
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, Rail, useReveal } from "@/components/site-ui";
 import {
   DiffFromSeo,
@@ -274,13 +274,17 @@ function Index() {
         <div className="container-beame">
           <div className="card-beame reveal p-6 md:p-8">
             <Eyebrow>Start here</Eyebrow>
-            <h2 className="section-title">Free AI Visibility Health Check</h2>
+            <h2 className="section-title">Free AI Visibility Audit</h2>
             <p className="section-lead">
               We run your brand through the prompts your customers actually use, and send back a
               plain-language report: which assistants mention you, which competitors they name in
               your place, and what is quietly blocking your crawlers from reaching you at all.
             </p>
-            <AuditLeadForm variant="home" />
+            <div className="mt-3 text-center">
+              <Link to="/audit" className="btn-beame btn-solid">
+                Start the free audit →
+              </Link>
+            </div>
             <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-muted-foreground">
               {proofPoints.map((p) => (
                 <li key={p}>✓ {p}</li>

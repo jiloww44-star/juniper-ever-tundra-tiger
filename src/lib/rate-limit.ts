@@ -69,3 +69,8 @@ export const auditLeadLimiter = createRateLimiter({
   max: 5,
   windowMs: 60 * 60 * 1000,
 });
+
+export const auditSubmissionLimiter = createRateLimiter({
+  max: 10,
+  windowMs: 60 * 60 * 1000,
+});
